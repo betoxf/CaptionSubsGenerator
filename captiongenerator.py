@@ -29,7 +29,7 @@ def translate_text(text, source_language, target_language):
         "Content-Type": "application/json",
     }
     data = {
-        "model": "gpt-4",
+        "model": "gpt-4o-mini",
         "messages": [
             {"role": "system", "content": f"Translate the following text from {source_language} to {target_language}."},
             {"role": "user", "content": text}
