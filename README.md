@@ -20,14 +20,21 @@ Python Dependencies: OpenAI Whisper, requests, and srt
 Installation
 
 Clone the repository:
+
 git clone https://github.com/yourusername/CaptionGeneratorTranslator.git
+
 cd CaptionGeneratorTranslator
+
 Install dependencies:
 pip install git+https://github.com/openai/whisper.git requests srt
+
 Usage
 
 Run the script:
+
 python caption_translator.py
+
+
 Interactive Terminal Instructions:
 Original Language: Type the language code of the video (e.g., es for Spanish). Type show to see a list of available languages.
 Target Language: Enter the desired language code for captions or press Enter to skip translation.
