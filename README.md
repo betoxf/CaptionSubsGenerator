@@ -1,7 +1,6 @@
-
 # 📝 Caption Generator and Translator
 
-Effortlessly generate and translate video captions using OpenAI’s Whisper and GPT models
+Effortlessly generate and translate video captions using OpenAI's Whisper and GPT models
 
 **Features** • [Quick Start](#quick-start) • [Installation](#installation) • [Usage](#usage) • [Advanced](#advanced) • [How It Works](#how-it-works)
 
@@ -10,7 +9,9 @@ Effortlessly generate and translate video captions using OpenAI’s Whisper and 
 ### 🚀 Features
 
 - 🎯 **Transcription**: Convert audio/video content to text with high accuracy
-- 🌐 **Optional Translation**: Translate generated captions to various languages using the OpenAI API
+- 🌐 **Smart Translation**: 
+  - Direct English translation using Whisper (no API key needed)
+  - Translation to other languages using OpenAI API
 - 🛠️ **Whisper Model Selection**: Choose from Whisper Tiny, Small, and Turbo models for different processing speeds and accuracies
 - 📊 **Language Abbreviation Display**: Shows supported language abbreviations for ease of selection
 - 🔍 **Flexible Output**: Generates `.srt` files for easy import into Final Cut Pro and other editing software
@@ -47,13 +48,15 @@ Effortlessly generate and translate video captions using OpenAI’s Whisper and 
 
 ### 🎬 Usage
 
-- **Original Language**: Enter the language code of the video (e.g., `es` for Spanish). Type `show` to see a list of available language options.
-- **Target Language**: Enter the desired language code for captions, or press Enter to skip translation.
-- **OpenAI API Key**: If translation is selected, provide the OpenAI API key.
-- **Whisper Model Selection**: Choose from Tiny, Small, and Turbo models to balance speed and accuracy.
-- **Video File Path**: Provide the full path to your video file (supported formats: `.mp4`, `.m4v`, `.mov`).
+- **Original Language**: Enter the language code of the video (e.g., `es` for Spanish)
+- **Target Language**: 
+  - For English translation: Simply enter 'en' or 'english' (uses Whisper's built-in translation)
+  - For other languages: Enter the desired language code and provide an OpenAI API key
+  - Press Enter to skip translation
+- **Whisper Model Selection**: Choose from Tiny, Small, and Turbo models to balance speed and accuracy
+- **Video File Path**: Provide the full path to your video file (supported formats: `.mp4`, `.m4v`, `.mov`)
 
-   The script generates an `.srt` file named `output_subtitles.srt`, ready for import into video editing software.
+The script generates an `.srt` file named `output_subtitles.srt`, ready for import into video editing software.
 
 ---
 
@@ -64,13 +67,15 @@ Effortlessly generate and translate video captions using OpenAI’s Whisper and 
    - **Small**: 244 MB - Moderate speed and accuracy
    - **Turbo (Large)**: 1.5 GB - Highest accuracy, longer processing
 
-- **Supported Languages**: To see all available language abbreviations, type `show` when prompted for language input.
+- **Translation Options**:
+   - **To English**: Uses Whisper's built-in translation - fast and free
+   - **To Other Languages**: Requires OpenAI API key for GPT-based translation
 
 ---
 
 ### ❓ How It Works
 
-This script uses OpenAI’s Whisper for transcription and GPT models for optional translation, saving results in `.srt` format for easy integration with editing software.
+This script leverages OpenAI's Whisper for transcription and translation to English. For other target languages, it uses GPT models for translation. Results are saved in `.srt` format for easy integration with editing software.
 
 ---
 
