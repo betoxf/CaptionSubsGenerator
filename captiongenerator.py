@@ -13,13 +13,23 @@ source_language = input("Please enter the original language of the video (e.g., 
 
 # Solicitar el idioma deseado
 target_language = input("Enter the desired language for captions (press Enter to keep the same language): ")
-if target_language == "":
-    print("\nNo translation needed, captions will be generated in the original language.")
-    translation_needed = False
-else:
-    translation_needed = True
-    print("\nTranslation required. Please enter your OpenAI API key to enable translation.")
-    API_KEY = input("OpenAI API Key: ")
+
+translation_needed = False
+use_whisper_translation = False
+API_KEY = None
+
+if target_language:
+    if target_language.lower() == 'en' or target_language.lower() == 'english':
+        print("\nWhisper will handle the translation to English directly - no API key needed.")
+        use_whisper_translation = True
+    else:
+        translation_needed = True
+        print("\nTranslation to languages other than English requires OpenAI's API.")
+        print("To get an API key:")
+        print("1. Go to https://platform.openai.com/api-keys")
+        print("2. Sign up or log in")
+        print("3. Create a new API key")
+        API_KEY = input("\nPlease enter your OpenAI API key: ")
 
 # Función para traducir texto usando la API de OpenAI
 def translate_text(text, source_language, target_language):
@@ -71,7 +81,11 @@ if not video_path.lower().endswith(accepted_formats):
 
 # Procesar el video
 print("\nProcessing the video...")
-result = model.transcribe(video_path)
+if use_whisper_translation:
+    # Use Whisper's built-in translation
+    result = model.transcribe(video_path, task="translate")
+else:
+    result = model.transcribe(video_path)
 
 # Generar subtítulos y traducir si es necesario
 captions = []
@@ -80,8 +94,8 @@ for segment in result['segments']:
     end = timedelta(seconds=segment['end'])
     text = segment['text']
     
-    # Traducir el texto si es necesario
-    if translation_needed:
+    # Traducir el texto solo si es necesario y no es una traducción de Whisper
+    if translation_needed and not use_whisper_translation:
         text = translate_text(text, source_language, target_language)
     
     # Crear subtítulo en formato SRT
